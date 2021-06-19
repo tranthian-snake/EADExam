@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tables</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <!--js-->
+    <script th:src="@{/js/min.js}"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>List Publisher</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Contact Person</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Address</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="publisher : ${publishers}">
+                <th scope="row" th:text="${publisher.publisher_id}"></th>
+                <td th:text="${publisher.name}"></td>
+                <td th:text="${publisher.contact_person}"></td>
+                <td th:text="${publisher.phone}"></td>
+                <td th:text="${publisher.address}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li th:if="${totalPage > 0}" class="page-item" th:each="t : ${#numbers.sequence( 0, (totalPage - 1)/1)}" th:classappend="${t==page} ? active">
+                    <a class="page-link" th:href="@{/list_publisher(size=${10}, page=${t})}" th:text="${t+1}"></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+</body>

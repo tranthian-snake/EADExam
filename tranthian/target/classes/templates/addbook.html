@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add book</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h2 style="color: #6b6d7d">Add book</h2>
+        <div class="col-9">
+            <form method="post" th:action="@{/add_book}" th:object="${book}">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" th:field="${book.name}">
+                </div>
+                <div class="mb-3">
+                    <label for="publisher" class="form-label">Publisher</label>
+                    <input type="number" class="form-control" name="publisher" id="publisher" th:field="${book.publish_id}">
+                </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label">Author</label>
+                    <input type="text" class="form-control" name="author" id="author" th:field="${book.author}">
+                </div>
+                <div class="mb-3">
+                    <label for="genre" class="form-label">Genre</label>
+                    <input type="text" class="form-control" name="genre" id="genre" th:field="${book.genre}">
+                </div>
+
+                <button type="reset" class="btn btn-danger">Reset</button>
+                <button type="submit" class="btn btn-primary" style="float: right;">Add book</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
